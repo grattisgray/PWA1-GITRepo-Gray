@@ -9,7 +9,7 @@ Assignment: Goal1: Assignment: Analyze Duel #1
  */
 
 
-//Pseudo code
+//Pseudocode for Fight Function
 
 /*alert user of the fight between Spider-man and Batman
 
