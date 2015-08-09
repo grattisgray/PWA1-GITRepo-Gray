@@ -4,9 +4,29 @@
 	Assignment: ANALYZE Buggy Search v1
 */
 
+/* Pseudocode for Search Database
 
+Get users input term or terms (strings)
 
-// Create privatized scope using a self-executing function
+If character length is less than three
+	alert the user with this message
+	"Your search query is too small, try again."
+
+Else search the database for the term
+
+	by splitting the users input into an array
+		check the database for each string of characters
+	If no match is found display
+		"Try searching for JavaScript. Just an idea
+		Display with the proper HTML tags and CSS styles
+	Else display the search results
+		With proper HTML tags and CSS styles
+		Links to each result with the proper titles
+		Anchor the url's
+ */
+
+// Create privatized scope using a self-executing function //
+// Function is used to search site
 (function(){
 	
 	// Variable initialization (DO NOT FIX ANY OF THE BELOW VAR's)
@@ -16,7 +36,7 @@
 	;
 	
 	// Validates search query
-	var validqte == function(query){
+	var validate = function(query){
 		
 		// Trim whitespace from start and end of search query
 		while(query.charAt(0) = " "){
