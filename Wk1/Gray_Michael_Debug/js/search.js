@@ -1,7 +1,7 @@
 /*
 	Name: Michael Gray
-	Date: August 9, 2015
-	Assignment: ANALYZE Buggy Search v1
+	Date: August 14, 2015
+	Assignment: Debug Search v2
 */
 
 /* Pseudocode for Search Database
@@ -32,8 +32,7 @@ Else search the database for the term
 	// Variable initialization (DO NOT FIX ANY OF THE BELOW VAR's)
 	var resultsDIV = document.getElementById("results"),
 		searchInput = document.forms[0].search,
-		currentSearch = ''
-	;
+		currentSearch = '';
 	
 	// Validates search query
 	var validate = function(query){//corrected spelling of validate
@@ -41,10 +40,10 @@ Else search the database for the term
 		// Trim whitespace from start and end of search query
 		while(query.charAt(0) === " "){
 			query = query.trim(1, query.length);//error 1: changed substring to trim
-		};
+		}
 		while(query.charAt(query.length-1) === ""){
-			query = query.substring(0, query.length-1);
-		;
+			query = query.trim(0, query.length-1);//error: changed substring to trim
+
 		
 		// Check search length, must have 3 characters
 			// String must be three or more characters long
@@ -65,11 +64,11 @@ Else search the database for the term
 	// Finds search matches
 		// Function searches for matches to the user's string
 	var search = function(query){ //error 4: needed curly bracket to start function
-		
+
 		// split the user's search query string into an array
 		// create an array using the user's string of characters
 		 var queryArray = query.split(" ");//error 5: changed .join to .split to split string.
-		
+
 		// array to store matched results from database.js
 		// store the matches for the results in an array (taken from the db js file)
 		var results = [];
@@ -82,13 +81,13 @@ Else search the database for the term
 			// save a lowercase variable of the video title
 			// Database indexes will end with a pipe "|"
 			var dbTitleEnd = db[i].indexOf('|');
-			var dbitem = db[i].tolowercase().substring(0, dbTitleEnd);
+			var dbItem = db[i].tolowercase().substring(0, dbTitleEnd);//error: changed dbitem to dbItem
 
 			// loop through the user's search query words
 			// save a lowercase variable of the search keyword
 			// use a for loop to search through the words and save as lowercase variables
 			for(var ii=0, jj=queryArray.length; ii<jj; ii++){
-				var qitem = queryArray[ii].tolowercase();
+				var qItem = queryArray[ii].tolowercase();//error: changed qitem to qItem
 
 				// is the keyword anywhere in the video title?
 				// If a match is found, push full db[i] into results array
@@ -163,6 +162,6 @@ Else search the database for the term
 		// return false is needed for most events - this will be reviewed in upcoming course material
 		// THE LINE DIRECTLY BELOW IS CORRECT
 		return false;
-	};
+    };
 
-})();
+}

@@ -27,48 +27,48 @@ Else search the database for the term
 
 // Create privatized scope using a self-executing function //
 // Function is used to search site
+
 (function(){
 	
 	// Variable initialization (DO NOT FIX ANY OF THE BELOW VAR's)
 	var resultsDIV = document.getElementById("results"),
 		searchInput = document.forms[0].search,
-		currentSearch = ''
-	;
+		currentSearch = '';
 	
 	// Validates search query
-	var validate = function(query){//corrected spelling of validate
+	var validate = function(query){//error1-2: logical error corrected, and corrected the spelling of validate
 		
 		// Trim whitespace from start and end of search query
 		while(query.charAt(0) === " "){
-			query = query.trim(1, query.length);//error 1: changed substring to trim
-		};
+			query = query.trim(1, query.length);//error 3: changed substring to trim
+		}
 		while(query.charAt(query.length-1) === ""){
-			query = query.substring(0, query.length-1);
-		;
+			query = query.trim(0, query.length-1);//error 4: changed substring to trim
+
 		
 		// Check search length, must have 3 characters
 			// String must be three or more characters long
 			// If loop checks the length of the user's stringer
 		if(query.length < 3){
 			// Alert the user with an error message
-			alert("Your search query is too small, try again.");// error 2: missing quotation mark
+			alert("Your search query is too small, try again.");// error 5: missing quotation mark
 			
 			// (DO NOT FIX THE LINE DIRECTLY BELOW)
 			// Return the search results to the user
 			searchInput.focus();
 			return;
-		};
+		}
 		// Search function goes here
-		search(query);
-	};
-	
+		currentSearch(query);//error: corrected search to match variables
+    }
+
 	// Finds search matches
 		// Function searches for matches to the user's string
-	var search = function(query){ //error 4: needed curly bracket to start function
+	var search = function(query){ //error 6: needed curly bracket to start function
 		
 		// split the user's search query string into an array
 		// create an array using the user's string of characters
-		 var queryArray = query.split(" ");//error 5: changed .join to .split to split string.
+		 var queryArray = query.split(" ");//error 7: changed .join to .split to split string.
 		
 		// array to store matched results from database.js
 		// store the matches for the results in an array (taken from the db js file)
@@ -82,35 +82,35 @@ Else search the database for the term
 			// save a lowercase variable of the video title
 			// Database indexes will end with a pipe "|"
 			var dbTitleEnd = db[i].indexOf('|');
-			var dbitem = db[i].tolowercase().substring(0, dbTitleEnd);
+			var dbItem = db[i].tolowercase().substring(0, dbTitleEnd);//error 8: changed dbitem to dbItem
 
 			// loop through the user's search query words
 			// save a lowercase variable of the search keyword
 			// use a for loop to search through the words and save as lowercase variables
 			for(var ii=0, jj=queryArray.length; ii<jj; ii++){
-				var qitem = queryArray[ii].tolowercase();
+				var qItem = queryArray[ii].tolowercase(); //error 9: changed qitem to qItem
 
 				// is the keyword anywhere in the video title?
 				// If a match is found, push full db[i] into results array
 				// Use if loop to find all the matches and display the results
-				var compare = dbitem.indexOf(qitem);
+				var compare = dbItem.indexOf(qItem);//error: corrected dbitem and qitem
 				if(compare !== -1){
 					// push the results to webpage
 					results.push(db[i]);
-				};
-			;
-		;
+				}
+
+
 		// Sort all the results by keywords
 		results.sort();
 
 		// Check that matches were found, and run output functions
 		// Check for matches, and display results
-		if(results.length = 0){
+		if(results.length === 0){
 			noMatch();
 		}else{
 			showMatches(results);
-		};
-	};
+		}
+	}
 
 	// Put "No Results" message into page (DO NOT FIX THE HTML VAR NOR THE innerHTML)
 		// If no results are found display a message to the user with the proper HTML tags and CSS styles
@@ -141,7 +141,7 @@ Else search the database for the term
 			// pull the title's string using index numbers
 			// using index numbers pull the title's string from the db
 			titleEnd = results[i].indexOf('|');
-			title = results[i].subString(0, titleEnd);
+			title = results[i].substring(0, titleEnd);//error: changed .subString to .substring
 
 			// pull the video url after the title
 			// after the title has been pulled, pull the url from the db
@@ -150,7 +150,7 @@ Else search the database for the term
 			// make the video link - THE NEXT LINE IS CORRECT.
 			// display the url as a link
 			html += '<p><a href=' + url + '>' + title + '</a></p>';
-		};
+		}
 		resultsDIV.innerHTML = html; //THIS LINE IS CORRECT.
 	};
 
@@ -164,5 +164,4 @@ Else search the database for the term
 		// THE LINE DIRECTLY BELOW IS CORRECT
 		return false;
 	};
-
-})();
+}
