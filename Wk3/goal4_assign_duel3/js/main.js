@@ -34,7 +34,7 @@ Assignment: Goal3: Assignment: The End Duel #3
 //****** self executing function ******//
 (function() {
 
-    console.log("Fight!");
+    //console.log("Fight!");
 
 // player names
 
@@ -81,11 +81,11 @@ Assignment: Goal3: Assignment: The End Duel #3
 // create a variable for the fight buttom using HTML id tag
     var fightButton = document.getElementById('fight_btn');
 
-// create a variable using firstElementChild (first element in the div) (used to change the round number)
-    var rd = fightButton.firstElementChild;
+// create a variable using HTML id
+    var roundOne = document.getElementById('round');
 
-// create a variable using lastElementChild (last element in div) (used to interact with the button)
-    var button = fightButton.lastElementChild;
+// create a variable using HTML class
+    var button = document.getElementsByName('buttonblue');
 
 // Use innerHTML to display players names and health on the page.
     f1.innerHTML = playerOne.name + ':' + playerOne.health;
@@ -121,19 +121,21 @@ Assignment: Goal3: Assignment: The End Duel #3
         if(results === 'no winner') {
             round++;
 
+
             //use the innerHTML selector to update each players health throughout the fight
             f1.innnerHTML = playerOne.name + ':' + playerOne.health;
             f2.innerHTML = playerTwo.name + ':' + playerTwo.health;
 
             //use innerHTML selector to update the round number after each click
-            rd.innerHTML = ' *ROUND' + round + ' OVER*';
+            round1.innerHTML = ' *ROUND' + round + ' OVER*';
 
         } else {
             // display the health of each fighter using innerHTML selector and display the results
             score.innerHTML = results;
             // display "FINISHED" after the fight is complete using innerHTML selector
             button.innerHTML = 'FINISHED!';
-        };
+
+        }
         //required e.preventDefault() to complete onclick function
             e.preventDefault();
             return false;
@@ -155,12 +157,12 @@ Assignment: Goal3: Assignment: The End Duel #3
             result = playerOne.name + ' WINS!!!';
         }else{
             result = 'NO WINNER!';
-        };
+        }
 
         return result;
-    };
+    }
 
-})();
+}());
 
 /*
     //function fight(){
