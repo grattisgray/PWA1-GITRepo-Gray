@@ -74,6 +74,19 @@ Assignment: Goal3: Assignment: The End Duel #3
 
     var score = document.getElementById('scores');
 
+// create a variable for each fighter using the HTML id tags
+    var spiderman = document.getElementById('kabal');
+    var batman = document.getElementById('kratos');
+
+// create a variable for the fight buttom using HTML id tag
+    var fightButton = document.getElementById('fight_btn');
+
+// create a variable using firstElementChild (first element in the div) (used to change the round number)
+    var rd = fightButton.firstElementChild;
+
+// create a variable using lastElementChild (last element in div) (used to interact with the button)
+    var button = fightButton.lastElementChild;
+    
 
 // keeps track of the round for the fight
 
