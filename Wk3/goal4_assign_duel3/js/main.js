@@ -53,8 +53,27 @@ Assignment: Goal3: Assignment: The End Duel #3
 
 // create an array for each players name, health, and damage
 
-    var playerOne = ["Spiderman", 100, 20];
-    var playerTwo = ["Batman", 100, 20];
+    //var playerOne = ["Spiderman", 100, 20];
+    //var playerTwo = ["Batman", 100, 20];
+
+// create objects for each players name, health, and damage (arrayed)
+
+    var playerOne = {
+        name:'Spiderman',
+        health: 100,
+        damage: 20
+    };
+
+    var playerTwo = {
+        name: 'Batman',
+        health: 100,
+        damage: 20
+    };
+
+// create new variables with element id tags from HTML Document using document.getElementById
+
+    var score = document.getElementById('scores');
+
 
 // keeps track of the round for the fight
 
@@ -66,10 +85,10 @@ Assignment: Goal3: Assignment: The End Duel #3
         ///Fight Function Code///
         //alert(playerOneName + ":" + playerOneHealth + " *START* " + playerTwoName + ":" + playerTwoHealth);
         //alert using an the array variable //changed all info to use array indexes
-        alert(playerOne[0] + ":" + playerOne[1] + " *START* " + playerTwo[0] + ":" + playerTwo[1]);
+        //alert(playerOne[0] + ":" + playerOne[1] + " *START* " + playerTwo[0] + ":" + playerTwo[1]);
 
         //for loop to determine damage inflicted against each fighter and winner of the fight
-        for (var i=0; i<10; i++){
+        //for (var i=0; i<10; i++){
             //random formula is - Math.floor(Math.random() * (max - min) + min);
            //random damage variables and formulas for each fighter
             //var minDamageOne = playerOneDamage * .5;
@@ -109,14 +128,14 @@ Assignment: Goal3: Assignment: The End Duel #3
             if(results === "no winner") {
                 round++;
                 //alert(playerOneName + ":" + playerOneHealth + " *ROUND " + round + " OVER* " + playerTwoName + ":" + playerTwoHealth);
-                alert(playerOne[0] + ":" + playerOne[1] + " *ROUND " + round + " OVER* " + playerTwo[0] + ":" + playerTwo[1]);
+                //alert(playerOne[0] + ":" + playerOne[1] + " *ROUND " + round + " OVER* " + playerTwo[0] + ":" + playerTwo[1]);
             }else{
                 //alert the user with the results of the fight
-                alert(results);
+                //alert(results);
                 //break the loop if they die
-                break
-            }
-        };
+                //break
+            //}
+        //};
 
     };
 
