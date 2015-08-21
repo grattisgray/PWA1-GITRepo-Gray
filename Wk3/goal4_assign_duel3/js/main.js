@@ -34,7 +34,7 @@ Assignment: Goal3: Assignment: The End Duel #3
 //****** self executing function ******//
 (function() {
 
-    //console.log("Fight!");
+    console.log("Fight!");
 
 // player names
 
@@ -59,7 +59,7 @@ Assignment: Goal3: Assignment: The End Duel #3
 // create objects for each players name, health, and damage (arrayed)
 
     var playerOne = {
-        name:'Spiderman',
+        name: 'Spiderman',
         health: 100,
         damage: 20
     };
@@ -75,8 +75,8 @@ Assignment: Goal3: Assignment: The End Duel #3
     var score = document.getElementById('scores');
 
 // create a variable for each fighter using the HTML id tags
-    var spiderman = document.getElementById('kabal');
-    var batman = document.getElementById('kratos');
+    var f1 = document.getElementById('kabal');
+    var f2 = document.getElementById('kratos');
 
 // create a variable for the fight buttom using HTML id tag
     var fightButton = document.getElementById('fight_btn');
@@ -86,15 +86,84 @@ Assignment: Goal3: Assignment: The End Duel #3
 
 // create a variable using lastElementChild (last element in div) (used to interact with the button)
     var button = fightButton.lastElementChild;
-    
+
+// Use innerHTML to display players names and health on the page.
+    f1.innerHTML = playerOne.name + ':' + playerOne.health;
+    f2.innerHTML = playerTwo.name + ':' + playerTwo.health;
 
 // keeps track of the round for the fight
 
     var round = 0;
 
 //Fight Function
+// create new function using .onclick (need to use (e), e.preventDefault, and return false)
+    // fight function starts after clicking the "Fight!" button
+    button.onclick = function (e) {
+        //testing function
+        //console.log("Hello does this work?");
+        //Use random damage formula from previous code - Amendment: Change arrays to objects using dot notation.
+        var minDamageOne = playerOne.damage * .5;
+        var minDamageTwo = playerTwo.damage * .5;
 
-    function fight(){
+        var fighter1 = Math.floor(Math.random() * (playerOne.damage - minDamageOne) + minDamageOne);
+        var fighter2 = Math.floor(Math.random() * (playerTwo.damage - minDamageTwo) + minDamageTwo);
+
+        playerOne.health -= fighter1;
+        playerTwo.health -= fighter2;
+
+        //console.log(playerOne.health);
+        //console.log(playerTwo.health);
+
+        //Variable to check the winner
+        var results = winnerCheck();
+
+        //Use if loop to check results
+        if(results === 'no winner') {
+            round++;
+
+            //use the innerHTML selector to update each players health throughout the fight
+            f1.innnerHTML = playerOne.name + ':' + playerOne.health;
+            f2.innerHTML = playerTwo.name + ':' + playerTwo.health;
+
+            //use innerHTML selector to update the round number after each click
+            rd.innerHTML = ' *ROUND' + round + ' OVER*';
+
+        } else {
+            // display the health of each fighter using innerHTML selector and display the results
+            score.innerHTML = results;
+            // display "FINISHED" after the fight is complete using innerHTML selector
+            button.innerHTML = 'FINISHED!';
+        };
+        //required e.preventDefault() to complete onclick function
+            e.preventDefault();
+            return false;
+    };
+
+    //Check the Winner of the Fight Function
+
+    function winnerCheck() {
+        //console.log('Hello does this work?');
+        //Result for no winner
+
+
+        //if loop determines the result or winner of the fight whether Spiderman Wins, Batman Wins, or No Winner
+        if (playerOne.health < 1 && playerTwo.health < 1) {
+            result = 'You Both Die';
+        }else if(playerOne.health < 1) {
+            result = playerTwo.name + 'WINS!!!';
+        }else if(playerTwo.health < 1) {
+            result = playerOne.name + ' WINS!!!';
+        }else{
+            result = 'NO WINNER!';
+        };
+
+        return result;
+    };
+
+})();
+
+/*
+    //function fight(){
         ///Fight Function Code///
         //alert(playerOneName + ":" + playerOneHealth + " *START* " + playerTwoName + ":" + playerTwoHealth);
         //alert using an the array variable //changed all info to use array indexes
@@ -108,15 +177,15 @@ Assignment: Goal3: Assignment: The End Duel #3
             //var minDamageTwo = playerTwoDamage * .5;
 
         // Random damage formula using the correct array indexes for each fighter
-            var minDamageOne = playerOne[2] * .5;
-            var minDamageTwo = playerTwo[2] * .5;
+            //var minDamageOne = playerOne[2] * .5;
+            //var minDamageTwo = playerTwo[2] * .5;
 
             //var fighter1 = Math.floor(Math.random()*(playerOneDamage - minDamageOne) + minDamageOne);
             //var fighter2 = Math.floor(Math.random()*(playerTwoDamage - minDamageTwo) + minDamageTwo);
 
 
-            var fighter1 = Math.floor(Math.random()*(playerOne[2] - minDamageOne) + minDamageOne);
-            var fighter2 = Math.floor(Math.random()*(playerTwo[2] - minDamageTwo) + minDamageTwo);
+            //var fighter1 = Math.floor(Math.random()*(playerOne[2] - minDamageOne) + minDamageOne);
+            //var fighter2 = Math.floor(Math.random()*(playerTwo[2] - minDamageTwo) + minDamageTwo);
             //console.log(fighter1);
             //console.log(fighter2);
 
@@ -127,8 +196,8 @@ Assignment: Goal3: Assignment: The End Duel #3
             //playerTwoHealth -= fighter2;
 
             //damage infliction formula using array indexes
-            playerOne[1] -= fighter1;
-            playerTwo[1] -= fighter2;
+            //playerOne[1] -= fighter1;
+            //playerTwo[1] -= fighter2;
 
             //console.log(playerOneHealth);
             //console.log(playerTwoHealth);
@@ -175,6 +244,6 @@ Assignment: Goal3: Assignment: The End Duel #3
 
     /***** The Program Starts *****/
    // console.log("programs starts here");
-    fight();
+   // fight();
 
-})();
+
