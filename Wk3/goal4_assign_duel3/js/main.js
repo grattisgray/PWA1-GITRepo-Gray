@@ -60,14 +60,14 @@ Assignment: Goal3: Assignment: The End Duel #3
 
     var playerOne = {
         name: 'Spiderman',
-        health: 100,
-        damage: 20
+        damage: 20,
+        health: 100
     };
 
     var playerTwo = {
         name: 'Batman',
-        health: 100,
-        damage: 20
+        damage: 20,
+        health: 100
     };
 
 // create new variables with element id tags from HTML Document using document.getElementById

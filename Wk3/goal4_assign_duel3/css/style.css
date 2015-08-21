@@ -38,6 +38,13 @@ body{
 	margin: 30% 44%;
 }
 
+#round{
+	font-size: 18px;
+	font-family: Helvetica, Arial, sans-serif;
+	position: center;
+	padding: 2px;
+}
+
 #fight_bg{
 	position: fixed;
 	z-index: 10;
