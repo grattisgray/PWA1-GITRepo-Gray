@@ -85,7 +85,7 @@ Assignment: Goal3: Assignment: The End Duel #3
     var roundOne = document.getElementById('round');
 
 // create a variable using HTML class
-    var button = document.getElementsByName('buttonblue');
+    var button = fightButton.getAttribute('#');
 
 // Use innerHTML to display players names and health on the page.
     f1.innerHTML = playerOne.name + ':' + playerOne.health;
@@ -127,7 +127,7 @@ Assignment: Goal3: Assignment: The End Duel #3
             f2.innerHTML = playerTwo.name + ':' + playerTwo.health;
 
             //use innerHTML selector to update the round number after each click
-            round1.innerHTML = ' *ROUND' + round + ' OVER*';
+            roundOne.innerHTML = ' *ROUND' + round + ' OVER*';
 
         } else {
             // display the health of each fighter using innerHTML selector and display the results
@@ -137,7 +137,7 @@ Assignment: Goal3: Assignment: The End Duel #3
 
         }
         //required e.preventDefault() to complete onclick function
-            e.preventDefault();
+            e.preventDefault(1);
             return false;
     };
 
