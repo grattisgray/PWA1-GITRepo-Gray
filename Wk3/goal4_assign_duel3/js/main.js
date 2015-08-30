@@ -78,14 +78,14 @@ Assignment: Goal3: Assignment: The End Duel #3
     var f1 = document.getElementById('kabal');
     var f2 = document.getElementById('kratos');
 
-// create a variable for the fight buttom using HTML id tag
+// create a variable for the fight button using HTML id tag
     var fightButton = document.getElementById('fight_btn');
 
 // create a variable using HTML id
     var roundOne = document.getElementById('round');
 
 // create a variable using HTML class
-    var button = fightButton.getAttribute('#');
+    var button = fightButton.lastElementChild;
 
 // Use innerHTML to display players names and health on the page.
     f1.innerHTML = playerOne.name + ':' + playerOne.health;
@@ -99,68 +99,71 @@ Assignment: Goal3: Assignment: The End Duel #3
 // create new function using .onclick (need to use (e), e.preventDefault, and return false)
     // fight function starts after clicking the "Fight!" button
     button.onclick = function (e) {
-        //testing function
-        //console.log("Hello does this work?");
-        //Use random damage formula from previous code - Amendment: Change arrays to objects using dot notation.
-        var minDamageOne = playerOne.damage * .5;
-        var minDamageTwo = playerTwo.damage * .5;
 
-        var fighter1 = Math.floor(Math.random() * (playerOne.damage - minDamageOne) + minDamageOne);
-        var fighter2 = Math.floor(Math.random() * (playerTwo.damage - minDamageTwo) + minDamageTwo);
+        //for (var i = 0; i < 10; i++) {
+            //testing function
+            //console.log("Hello does this work?");
+            //Use random damage formula from previous code - Amendment: Change arrays to objects using dot notation.
+            var minDamageOne = playerOne.damage * .5;
+            var minDamageTwo = playerTwo.damage * .5;
 
-        playerOne.health -= fighter1;
-        playerTwo.health -= fighter2;
+            var fighter1 = Math.floor(Math.random() * (playerOne.damage - minDamageOne) + minDamageOne);
+            var fighter2 = Math.floor(Math.random() * (playerTwo.damage - minDamageTwo) + minDamageTwo);
 
-        //console.log(playerOne.health);
-        //console.log(playerTwo.health);
+            playerOne.health -= fighter1;
+            playerTwo.health -= fighter2;
 
-        //Variable to check the winner
-        var results = winnerCheck();
+            console.log(playerOne.health);
+            console.log(playerTwo.health);
 
-        //Use if loop to check results
-        if(results === 'no winner') {
-            round++;
+            //Variable to check the winner
+            var results = winnerCheck();
+
+            //Use if loop to check results
+            if (results === 'no winner') {
+                round++;
+
+                //use innerHTML selector to update the round number after each click
+                roundOne.innerHTML = ' *ROUND' + round + ' OVER*';
+
+                //use the innerHTML selector to update each players health throughout the fight
+                f1.innerHTML = playerOne.name + ':' + playerOne.health;
+                f2.innerHTML = playerTwo.name + ':' + playerTwo.health;
 
 
-            //use the innerHTML selector to update each players health throughout the fight
-            f1.innnerHTML = playerOne.name + ':' + playerOne.health;
-            f2.innerHTML = playerTwo.name + ':' + playerTwo.health;
 
-            //use innerHTML selector to update the round number after each click
-            roundOne.innerHTML = ' *ROUND' + round + ' OVER*';
-
-        } else {
-            // display the health of each fighter using innerHTML selector and display the results
-            score.innerHTML = results;
-            // display "FINISHED" after the fight is complete using innerHTML selector
-            button.innerHTML = 'FINISHED!';
-
-        }
-        //required e.preventDefault() to complete onclick function
+            } else {
+                // display the health of each fighter using innerHTML selector and display the results
+                score.innerHTML = results;
+                // display "FINISHED" after the fight is complete using innerHTML selector
+                button.innerHTML = 'FINISHED!';
+            }
+            //required e.preventDefault() to complete onclick function
             e.preventDefault(1);
             return false;
-    };
-
-    //Check the Winner of the Fight Function
-
-    function winnerCheck() {
-        //console.log('Hello does this work?');
-        //Result for no winner
-
-
-        //if loop determines the result or winner of the fight whether Spiderman Wins, Batman Wins, or No Winner
-        if (playerOne.health < 1 && playerTwo.health < 1) {
-            result = 'You Both Die';
-        }else if(playerOne.health < 1) {
-            result = playerTwo.name + 'WINS!!!';
-        }else if(playerTwo.health < 1) {
-            result = playerOne.name + ' WINS!!!';
-        }else{
-            result = 'NO WINNER!';
         }
+        ;
 
-        return result;
-    }
+        //Check the Winner of the Fight Function
+
+        function winnerCheck() {
+            //console.log('Hello does this work?');
+            //Result for no winner
+
+
+            //if loop determines the result or winner of the fight whether Spiderman Wins, Batman Wins, or No Winner
+            if (playerOne.health < 1 && playerTwo.health < 1) {
+                result = 'You Both Die';
+            } else if (playerOne.health < 1) {
+                result = playerTwo.name + ' WINS!!!';
+            } else if (playerTwo.health < 1) {
+                result = playerOne.name + ' WINS!!!';
+            } else {
+                result = 'NO WINNER!';
+            }
+
+            return result;
+        }
 
 }());
 
